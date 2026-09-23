@@ -14,7 +14,7 @@ Started in network_logs, filtered post requests around the flagged incident time
  
 Went into wireshark and filtered the two nearest timestamps around the gap. found a tcp conversation with no matching entry in network_logs, confirmed that activity just wasnt visible to the logger. followed the stream, got 0 turns, no payload. checked the flags, it was just a bare connection attempt with no data exchanged. ruled that one out but kept the ip.
  
-Searched that ip across the whole pcap and got four instances of the same conversation, one flagged black and red ("bad tcp", turned out to just be a capture gap, not actually malicious). followed that stream and got one turn with 7 bytes of payload: id=beacon&ver=1 / 200 ok, coming off port 8080. c2 beacon check in, implant phoning home and server acking it. port 8080 is why it never hit network_logs, outside whatever the logger was scoped to.
+Searched for tcp across the network logs, found one instance (occuring at the time of the attack, meaning the logs were not sorted as I previously assumed). Used that IP across the whole pcap and got four instances of the same conversation, one flagged black and red ("bad tcp", turned out to just be a capture gap, not actually malicious). followed that stream and got one turn with 7 bytes of payload: id=beacon&ver=1 / 200 ok, coming off port 8080. c2 beacon check in, implant phoning home and server acking it.
  
 From there just worked through the rest of the questions bouncing between the two sources depending what each one had:
  
@@ -39,8 +39,8 @@ Main takeaway here was wireshark mechanics more than the attack chain itself:
 - when a log file is too big to read by hand, pull the field you care about and run sort | uniq -c | sort -rn, the anomaly is usually the one sitting at count 1.
 - logs and pcaps arent redundant, one is searchable but incomplete, the other is complete but needs manual digging. need both.
 
-## Answers:
-# No Flag for this Room
+# Answers:
+## No Flag for this Room
 
 - 10.10.10.100
 - 1.1.1.1:8080
