@@ -1,6 +1,6 @@
 # WPA2 Handshake Capture — Raspberry Pi 4 + Alfa (MT7612U)
 
-> Network details in this writeup are genericized. This was performed against a personally owned router with explicit authorization — no third-party network was targeted.
+> Network details in this writeup are genericized. This was performed against a personally owned router/device, with explicit authorization; no third-party network or device was targeted.
 
 ## Goal
 
