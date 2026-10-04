@@ -83,3 +83,7 @@ These represent the next logical steps if this is extended, not oversights in th
 ## Disclaimer
 
 Performed entirely against own hardware (personal AP clone, personal test device) in a home lab for educational purposes. Not tested against, or intended for use against, any network or device without explicit authorization.
+
+## Reproduced Results
+
+Repeat run against the same target: the test device initially associated with the legitimate AP over the clone despite the rogue AP being up and broadcasting, and this held across several wifi off/on retries. Note the Pi and real router were colocated, so eventual success on this run wasn't due to improved relative signal strength; cause is unconfirmed. On the connection that did succeed, the device also showed an "insecure network" warning (security type mismatch against the known SSID), which had not appeared on an earlier successful connection in this same run, suggesting the check isn't applied consistently. The warning appeared after association had already occurred, not before.
