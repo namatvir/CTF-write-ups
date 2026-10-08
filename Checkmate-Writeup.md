@@ -1,6 +1,6 @@
 # Checkmate -- TryHackMe
  
-**Category:** Password Attachs
+**Category:** Password Attacks
 **Tools used:** Cupp, Hydra, vim, Hashcat, Crunch
 **Difficulty:** Easy
  
